@@ -3,7 +3,7 @@
   "compilerOptions": {
     // File Layout
     "rootDir": "./src",
-    "outDir": "./dist",
+    "outDir": "./build",
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
@@ -44,6 +44,7 @@
   "exclude": [
     "prisma.config.ts",
     "node_modules",
-    "dist"
+    "prisma",
+    "build"
   ]
 }

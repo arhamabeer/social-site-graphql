@@ -4,8 +4,10 @@ const queries = {
   userLogin: async (
     _: any,
     { email, password }: { email: string; password: string },
+    context: any,
   ) => {
     const res = await UserService.userLogin(email, password);
+    console.log(context);
     return res;
   },
 };

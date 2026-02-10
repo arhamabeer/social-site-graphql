@@ -17,6 +17,10 @@ export class UserService {
     return createHmac("sha256", salt).update(password).digest("hex");
   }
 
+  public static jwtDecode(token: string) {
+    return jwt.verify(token, JWT_SECRET);
+  }
+
   public static createUser(payload: CreateUserPayload) {
     const { firstName, lastName, email, password, profileImageUrl } = payload;
 

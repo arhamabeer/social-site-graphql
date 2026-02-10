@@ -1,8 +1,7 @@
 import express from "express";
 import cors from "cors";
-import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@as-integrations/express5";
-import { prismaClient } from "./lib/db.js";
+import createApolloServer from "./graphql/index.js";
 
 async function init() {
   const PORT = Number(process.env.PORT) || 8000;
@@ -13,46 +12,8 @@ async function init() {
   app.use(express.urlencoded({ extended: true }));
   app.use(cors());
 
-  const gqlServer = new ApolloServer({
-    typeDefs: `
-      type Query {
-        hello: String
-      }
-      type Mutation {
-        createUser(firstName: String!, email: String!, password: String!) : Boolean
-      }
-    `,
-    resolvers: {
-      Query: {
-        hello: () => "Hello, GraphQL!",
-      },
-      Mutation: {
-        createUser: async (
-          _,
-          {
-            firstName,
-            email,
-            password,
-          }: { firstName: string; email: string; password: string },
-        ) => {
-          console.log("mutation => ", firstName, email, typeof password);
-          await prismaClient.user.create({
-            data: {
-              email,
-              firstName,
-              password,
-              salt: "12asd3r4freg54gh76n7mim98kk90ljh",
-            },
-          });
-          return true;
-        },
-      },
-    },
-  });
+  app.use("/graphql", expressMiddleware(await createApolloServer()));
 
-  await gqlServer.start();
-
-  app.use("/graphql", expressMiddleware(gqlServer));
   app.get("/", (req, res) => {
     res.json("Hello, World!");
   });

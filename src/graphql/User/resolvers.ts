@@ -10,6 +10,10 @@ const queries = {
     console.log(context);
     return res;
   },
+  getCurrentLoggedInUser: async (_: any, __: any, context: any) => {
+    const _userRes = await UserService.getCurrentLoggedInUser(context.email);
+    return _userRes;
+  },
 };
 
 const mutations = {

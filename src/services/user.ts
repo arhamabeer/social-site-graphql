@@ -17,6 +17,12 @@ export class UserService {
     return createHmac("sha256", salt).update(password).digest("hex");
   }
 
+  public static async getCurrentLoggedInUser(email: string) {
+    const user = await prismaClient.user.findUnique({ where: { email } });
+    if (!user) throw "User not found";
+    return user;
+  }
+
   public static jwtDecode(token: string) {
     return jwt.verify(token, JWT_SECRET);
   }

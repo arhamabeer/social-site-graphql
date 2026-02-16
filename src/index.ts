@@ -15,18 +15,15 @@ async function init() {
 
   app.use(
     "/graphql",
-    expressMiddleware(
-      await createApolloServer(),
-      // {
-      //   context: async (req: any) => {
-      //     const token = req.headers.authorization || "";
-      //     if (!token) throw "Token not found";
-      //     const user = UserService.jwtDecode(token);
-      //     if (!user) throw "Invalid token";
-      //     return user;
-      //   },
-      // }
-    ),
+    expressMiddleware(await createApolloServer(), {
+      context: async ({ req }: any) => {
+        const token = req.headers.authorization || "";
+        if (!token) throw "Token not found";
+        const user = UserService.jwtDecode(token);
+        if (!user) throw "Invalid token";
+        return user;
+      },
+    }),
   );
 
   app.get("/", (req, res) => {

@@ -1,5 +1,5 @@
 import { UserService, type CreateUserPayload } from "../../services/user.js";
-import { requireAuth } from "../../utils/auth.js";
+import { requireAuth } from "../../middlewares/auth.js";
 
 const queries = {
   userLogin: async (

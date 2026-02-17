@@ -43,7 +43,7 @@ async function init() {
         timestamp: new Date().toLocaleString(),
       });
     } catch (error) {
-      res.status(200).json({
+      res.status(500).json({
         server: "unhealthy",
         database: "disconnected",
         uptime: _uptime,

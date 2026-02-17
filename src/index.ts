@@ -18,9 +18,8 @@ async function init() {
     expressMiddleware(await createApolloServer(), {
       context: async ({ req }: any) => {
         const token = req.headers.authorization || "";
-        if (!token) throw "Token not found";
-        const user = UserService.jwtDecode(token);
-        if (!user) throw "Invalid token";
+        let user = null;
+        if (token) user = UserService.jwtDecode(token);
         return user;
       },
     }),

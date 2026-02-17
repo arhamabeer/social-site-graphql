@@ -1,4 +1,5 @@
 import { UserService, type CreateUserPayload } from "../../services/user.js";
+import { requireAuth } from "../../utils/auth.js";
 
 const queries = {
   userLogin: async (
@@ -11,6 +12,7 @@ const queries = {
     return res;
   },
   getCurrentLoggedInUser: async (_: any, __: any, context: any) => {
+    requireAuth(context);
     const _userRes = await UserService.getCurrentLoggedInUser(context.email);
     return _userRes;
   },

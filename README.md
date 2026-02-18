@@ -1,18 +1,20 @@
-`DEPENDENCIES`
+### `DEPENDENCIES`
 
 `yarn add typescript tsc-watch prisma @types/node @types/express @types/cors`
 
-`DEV-DEPENDENCIES`
+### `DEV-DEPENDENCIES`
 
 `yarn add typescript tsc-watch prisma @types/node @types/express @types/cors @types/jsonwebtoken -D`
 
-`TYPESCRIPT INITIALIZATION`
+### `TYPESCRIPT INITIALIZATION`
+
 `npx tsc --init`
 
-`PRISMA INITIALIZATION`
+### `PRISMA INITIALIZATION`
+
 `npx prisma init`
 
-`UPDATE TSCONFIG.JSON`
+### `UPDATE TSCONFIG.JSON`
 
 - add:
   "exclude": [

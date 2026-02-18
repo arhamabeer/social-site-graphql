@@ -14,6 +14,18 @@
 
 `npx prisma init`
 
+### `UPDATE PACKAGE.JSON`
+
+` "type": "module"`
+
+### `DB MIGRATION`
+
+`npx prisma migrate --name <<migration_name>>`
+
+### `GIT IGNORE INIT`
+
+`npx gitignore node`
+
 ### `UPDATE TSCONFIG.JSON`
 
 - add:

@@ -14,6 +14,10 @@
 
 `npx prisma init`
 
+### `PRISMA GENERATION`
+
+`npx prisma generate`
+
 ### `UPDATE PACKAGE.JSON`
 
 ` "type": "module"`

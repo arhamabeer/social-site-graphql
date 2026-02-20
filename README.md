@@ -24,7 +24,7 @@
 
 ### `DB MIGRATION`
 
-`npx prisma migrate --name <<migration_name>>`
+`npx prisma migrate dev --name <<migration_name>>`
 
 ### `GIT IGNORE INIT`
 
